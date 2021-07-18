@@ -11,5 +11,6 @@ interface UserRepositoryInterface
     public function disabled($id);
     public function delete($id);
     public function getUserByEmail($email);
+    public function UserUpdatePassword($id,$data);
 
 }

@@ -61,4 +61,9 @@ class UserRepository implements UserRepositoryInterface
         $this->show($id)->delete();
         return true;
     }
+
+    public function UserUpdatePassword($id,$data)
+    {
+
+    }
 }
