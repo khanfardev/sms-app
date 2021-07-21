@@ -2,7 +2,12 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\StudentClassController;
+use App\Http\Controllers\Api\StudentGroupController;
+use App\Http\Controllers\Api\StudentShiftController;
+use App\Http\Controllers\Api\TuitionFeeCategoryController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\YearController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +32,15 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::get('/show/{id}', [UserController::class, 'show'])->name('users.show');
             Route::patch('/update/{id}', [UserController::class, 'update'])->name('users.update');
             Route::delete('/delete/{id}', [UserController::class, 'delete'])->name('users.delete');
+        });
+        Route::prefix('student-configure')->group(function () {
+//            Route::get('/all-user', [UserController::class, 'index'])->name('user.index');
+            Route::resource('classes',StudentClassController::class);
+            Route::resource('years',YearController::class);
+            Route::resource('shifts',StudentShiftController::class);
+            Route::resource('groups',StudentGroupController::class);
+            Route::resource('tuition-fee-category',TuitionFeeCategoryController::class);
+
 
         });
 
@@ -37,6 +51,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::prefix('profile')->group(function () {
             Route::get('/show', [ProfileController::class, 'show'])->name('profile.show');
             Route::patch('/update', [ProfileController::class, 'update'])->name('profile.update');
+            Route::patch('/update-password', [ProfileController::class, 'updatePassword'])->name('profile.update-password');
 
         });
     });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdatePasswordRequest;
 use App\Http\Requests\UpdateProfileUserRequest;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\JsonResponse;
@@ -23,6 +24,11 @@ class ProfileController extends Controller
     public function update(UpdateProfileUserRequest $request):JsonResponse{
         $user = $this->repository->update(auth()->user()->id,$request->validated());
 
+        return response()->json($user);
+
+    }
+    public function updatePassword(UpdatePasswordRequest $request):JsonResponse{
+        $user = $this->repository->UserUpdatePassword($request->validated());
         return response()->json($user);
 
     }

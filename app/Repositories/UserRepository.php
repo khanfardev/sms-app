@@ -62,8 +62,16 @@ class UserRepository implements UserRepositoryInterface
         return true;
     }
 
-    public function UserUpdatePassword($id,$data)
+    public function UserUpdatePassword($data)
     {
+        if(Hash::check($data['old_password'],auth()->user()->password)){
+            $user = $this->show(auth()->user()->id);
+            $new_password = Hash::make($data['new_password']);
+            $user->update(['password'=>$new_password]);
+            return $user;
+        }
+        return false;
+
 
     }
 }
