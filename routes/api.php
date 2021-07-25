@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\StudentClassController;
 use App\Http\Controllers\Api\StudentGroupController;
 use App\Http\Controllers\Api\StudentShiftController;
+use App\Http\Controllers\Api\TuitionFeeCategoryAmountController;
 use App\Http\Controllers\Api\TuitionFeeCategoryController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\YearController;
@@ -34,13 +35,13 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::delete('/delete/{id}', [UserController::class, 'delete'])->name('users.delete');
         });
         Route::prefix('student-configure')->group(function () {
-//            Route::get('/all-user', [UserController::class, 'index'])->name('user.index');
             Route::resource('classes',StudentClassController::class);
             Route::resource('years',YearController::class);
             Route::resource('shifts',StudentShiftController::class);
             Route::resource('groups',StudentGroupController::class);
             Route::resource('tuition-fee-category',TuitionFeeCategoryController::class);
-
+            Route::resource('tuition-amount',TuitionFeeCategoryAmountController::class);
+            Route::get('tuition-amount-details/{category_id}',[TuitionFeeCategoryAmountController::class,'getDetails']);
 
         });
 

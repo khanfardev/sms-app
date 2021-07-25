@@ -8,6 +8,8 @@ use App\Repositories\StudentGroupRepository;
 use App\Repositories\StudentGroupRepositoryInterface;
 use App\Repositories\StudentShiftRepository;
 use App\Repositories\StudentShiftRepositoryInterface;
+use App\Repositories\TuitionFeeAmountRepository;
+use App\Repositories\TuitionFeeAmountRepositoryInterface;
 use App\Repositories\TuitionFeeCategoryRepository;
 use App\Repositories\TuitionFeeCategoryRepositoryInterface;
 use App\Repositories\UserRepository;
@@ -31,6 +33,8 @@ class RepositoriesServiceProvider extends ServiceProvider
         $this->app->bind(StudentShiftRepositoryInterface::class, StudentShiftRepository::class);
         $this->app->bind(TuitionFeeCategoryRepositoryInterface::class, TuitionFeeCategoryRepository::class);
         $this->app->bind(StudentGroupRepositoryInterface::class, StudentGroupRepository::class);
+        $this->app->bind(TuitionFeeAmountRepositoryInterface::class, TuitionFeeAmountRepository::class);
+
     }
 
     /**
