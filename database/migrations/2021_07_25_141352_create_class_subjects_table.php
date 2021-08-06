@@ -15,6 +15,14 @@ class CreateClassSubjectsTable extends Migration
     {
         Schema::create('class_subjects', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('class_id');
+            $table->unsignedBigInteger('subject_id');
+            $table->double('full_mark');
+            $table->double('success_mark');
+            $table->double('total_mark');
+            $table->foreign('subject_id')->references('id')->on('subjects');
+            $table->foreign('class_id')->references('id')->on('student_classes');
+
             $table->timestamps();
         });
     }

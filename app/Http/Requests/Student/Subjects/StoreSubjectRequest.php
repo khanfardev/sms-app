@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Student\Shifts;
+namespace App\Http\Requests\Student\Subjects;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreShiftRequest extends FormRequest
+class StoreSubjectRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

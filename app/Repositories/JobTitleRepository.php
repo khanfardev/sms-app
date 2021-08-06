@@ -2,33 +2,34 @@
 
 namespace App\Repositories;
 
+use App\Models\JobTitle;
 use App\Models\StudentClass;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-class StudentClassesRepository implements StudentClassesRepositoryInterface
+class JobTitleRepository implements JobTitleRepositoryInterface
 {
-    private StudentClass $studentClass;
+    private JobTitle $jobTitle;
 
-    public function __construct(StudentClass $studentClass)
+    public function __construct(JobTitle $jobTitle)
     {
-        $this->studentClass = $studentClass;
+        $this->jobTitle = $jobTitle;
     }
 
 
     public function get()
     {
-        return $this->studentClass->paginate(10);
+        return $this->jobTitle->paginate(10);
     }
 
     public function show($id)
     {
-        return $this->studentClass->find($id);
+        return $this->jobTitle->find($id);
     }
 
     public function store($data)
     {
-        return $this->studentClass->create($data);
+        return $this->jobTitle->create($data);
     }
 
     public function update($id, $data)

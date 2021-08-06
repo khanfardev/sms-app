@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class TypeExam extends Model
 {
     use HasFactory;
+    protected $fillable = ['name'];
+
 }

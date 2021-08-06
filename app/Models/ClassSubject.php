@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class ClassSubject extends Model
 {
     use HasFactory;
+    protected $fillable = ['class_id','subject_id','full_mark','success_mark','total_mark'];
 }

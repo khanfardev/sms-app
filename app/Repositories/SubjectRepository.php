@@ -2,35 +2,33 @@
 
 namespace App\Repositories;
 
-use App\Models\StudentClass;
-use App\Models\StudentGroup;
-use App\Models\TypeExam;
+use App\Models\Subject;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-class TypeExamRepository implements TypeExamRepositoryInterface
+class SubjectRepository implements SubjectRepositoryInterface
 {
-    private TypeExam $typeExam;
+    private Subject $subject;
 
-    public function __construct(TypeExam $typeExam)
+    public function __construct(Subject $subject)
     {
-        $this->typeExam = $typeExam;
+        $this->subject = $subject;
     }
 
 
     public function get()
     {
-        return $this->typeExam->paginate(10);
+        return $this->subject->paginate(10);
     }
 
     public function show($id)
     {
-        return $this->typeExam->find($id);
+        return $this->subject->find($id);
     }
 
     public function store($data)
     {
-        return $this->typeExam->create($data);
+        return $this->subject->create($data);
     }
 
     public function update($id, $data)

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Student\Groups;
+namespace App\Http\Requests\Student\JobTitles;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreGroupRequest extends FormRequest
+class StoreJobTitleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

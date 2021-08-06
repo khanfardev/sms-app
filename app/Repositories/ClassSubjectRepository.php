@@ -2,37 +2,40 @@
 
 namespace App\Repositories;
 
+use App\Models\ClassSubject;
 use App\Models\StudentClass;
 use App\Models\TuitionFeeCategory;
 use App\Models\TuitionFeeCategoryAmount;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-class TuitionFeeAmountRepository implements TuitionFeeAmountRepositoryInterface
+class ClassSubjectRepository implements ClassSubjectRepositoryInterface
 {
-    private TuitionFeeCategoryAmount $tuitionFeeCategoryAmount;
+    private ClassSubject $classSubject;
 
-    public function __construct(TuitionFeeCategoryAmount $tuitionFeeCategoryAmount)
+    public function __construct(ClassSubject $classSubject)
     {
-        $this->tuitionFeeCategoryAmount = $tuitionFeeCategoryAmount;
+        $this->classSubject = $classSubject;
     }
 
 
     public function get()
     {
-        return $this->tuitionFeeCategoryAmount->paginate(10);
+        return $this->classSubject->paginate(10);
     }
-    public function getByCategoryDetails($category_id){
-        return $this->tuitionFeeCategoryAmount->where('category_id',$category_id)->get();
+
+    public function geClassIdDetails($class_id)
+    {
+        return $this->classSubject->where('class_id',$class_id)->get();
     }
     public function show($id)
     {
-        return $this->tuitionFeeCategoryAmount->find($id);
+        return $this->classSubject->find($id);
     }
 
     public function store($data)
     {
-        return $this->tuitionFeeCategoryAmount->create($data);
+        return $this->classSubject->create($data);
     }
 
     public function update($id, $data)
@@ -46,6 +49,7 @@ class TuitionFeeAmountRepository implements TuitionFeeAmountRepositoryInterface
     {
         return $this->show($id)->delete();
     }
+
 
 
 }

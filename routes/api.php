@@ -1,12 +1,16 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ClassSubjectController;
+use App\Http\Controllers\Api\JobTitleController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\StudentClassController;
 use App\Http\Controllers\Api\StudentGroupController;
 use App\Http\Controllers\Api\StudentShiftController;
+use App\Http\Controllers\Api\SubjectController;
 use App\Http\Controllers\Api\TuitionFeeCategoryAmountController;
 use App\Http\Controllers\Api\TuitionFeeCategoryController;
+use App\Http\Controllers\Api\TypeExamController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\YearController;
 use Illuminate\Http\Request;
@@ -34,14 +38,22 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::patch('/update/{id}', [UserController::class, 'update'])->name('users.update');
             Route::delete('/delete/{id}', [UserController::class, 'delete'])->name('users.delete');
         });
-        Route::prefix('student-configure')->group(function () {
+        Route::prefix('configure')->group(function () {
             Route::resource('classes',StudentClassController::class);
             Route::resource('years',YearController::class);
             Route::resource('shifts',StudentShiftController::class);
             Route::resource('groups',StudentGroupController::class);
             Route::resource('tuition-fee-category',TuitionFeeCategoryController::class);
             Route::resource('tuition-amount',TuitionFeeCategoryAmountController::class);
-            Route::get('tuition-amount-details/{category_id}',[TuitionFeeCategoryAmountController::class,'getDetails']);
+            Route::get('tuition-amount/details/{category_id}',[TuitionFeeCategoryAmountController::class,'getDetails']);
+            Route::resource('type-exams',TypeExamController::class);
+            Route::resource('subjects',SubjectController::class);
+            Route::resource('class-subjects',ClassSubjectController::class);
+            Route::get('tuition-amount-details/{class_id}',[ClassSubjectController::class,'getDetails']);
+            Route::resource('job-titles',JobTitleController::class);
+
+        });
+        Route::prefix('student')->group(function () {
 
         });
 

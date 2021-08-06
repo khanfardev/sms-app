@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Student\TuitionFeeCategoryAmount;
+namespace App\Http\Requests\Student\ClassSubjects;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateTuitionFeeCategoryAmountRequest extends FormRequest
+class UpdateClassSubjectRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,11 @@ class UpdateTuitionFeeCategoryAmountRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_id'=>'nullable|integer',
+            'subject_id'=>'nullable|integer',
             'class_id'=>'nullable|integer',
-            'amount'=>'nullable|numeric',
+            'full_mark'=>'nullable|numeric',
+            'success_mark'=>'nullable|numeric',
+            'total_mark'=>'nullable|numeric',
 
         ];
     }

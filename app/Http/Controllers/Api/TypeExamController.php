@@ -2,85 +2,66 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\Student\TypeExams\StoreTypeExamRequest;
+use App\Http\Requests\Student\TypeExams\UpdateTypeExamsRequest;
 use App\Models\TypeExam;
+use App\Repositories\TypeExamRepositoryInterface;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class TypeExamController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    private $repository;
+
+    public function __construct(TypeExamRepositoryInterface $repository)
     {
-        //
+        $this->repository = $repository;
+    }
+    public function index(): JsonResponse
+    {
+        $data = $this->repository->get();
+        return response()->json($data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function store(StoreTypeExamRequest $request):JsonResponse
     {
-        //
+        $studentClass=$this->repository->store($request->validated());
+        return response()->json($studentClass);
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\TypeExam  $typeExam
-     * @return \Illuminate\Http\Response
-     */
-    public function show(TypeExam $typeExam)
+
+    public function show($id) : JsonResponse
     {
-        //
+        return response()->json($this->repository->show($id));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\TypeExam  $typeExam
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(TypeExam $typeExam)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TypeExam  $typeExam
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, TypeExam $typeExam)
+
+    public function update(UpdateTypeExamsRequest $request, $id) :JsonResponse
     {
-        //
+        $this->repository->update($id,$request->validated());
+        return response()->json("Updated successfully");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\TypeExam  $typeExam
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(TypeExam $typeExam)
+
+    public function destroy($id)
     {
-        //
+        $this->repository->delete($id);
+        return response()->json("Deleted successfully");
+
     }
 }

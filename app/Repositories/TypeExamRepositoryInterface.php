@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-interface StudentGroupRepositoryInterface
+interface TypeExamRepositoryInterface
 {
     public function get();
     public function show($id);

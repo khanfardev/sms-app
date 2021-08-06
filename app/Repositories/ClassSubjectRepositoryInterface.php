@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
-interface TuitionFeeAmountRepositoryInterface
+interface ClassSubjectRepositoryInterface
 {
     public function get();
-    public function getByCategoryDetails($category_id);
+    public function geClassIdDetails($class_id);
     public function show($id);
     public function store($data);
     public function update($id, $data);
