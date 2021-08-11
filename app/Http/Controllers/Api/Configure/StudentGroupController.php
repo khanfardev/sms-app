@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Configure;
 
-use App\Http\Requests\Student\Groups\StoreGroupRequest;
-use App\Http\Requests\Student\Groups\UpdateGroupRequest;
+use App\Http\Requests\Configure\Groups\StoreGroupRequest;
+use App\Http\Requests\Configure\Groups\UpdateGroupRequest;
 use App\Models\StudentGroup;
 use App\Repositories\StudentGroupRepositoryInterface;
 use Illuminate\Http\JsonResponse;

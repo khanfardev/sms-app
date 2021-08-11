@@ -1,22 +1,28 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\Student;
 
+use App\Http\Controllers\Controller;
 use App\Models\Student;
+use App\Repositories\StudentRepositoryInterface;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    private $repository;
 
+    public function __construct(StudentRepositoryInterface $repository)
+    {
+        $this->repository = $repository;
+    }
+    public function index() :JsonResponse
+    {
+        return response()->json(['students'=>$this->repository->get()]);
+    }
+    public function getStudentWithYearClass(Request $request) :JsonResponse{
+        return response()->json(['students'=>$this->repository->getStudentWithClass($request->class_id,$request->year_id)]);
+    }
     /**
      * Show the form for creating a new resource.
      *

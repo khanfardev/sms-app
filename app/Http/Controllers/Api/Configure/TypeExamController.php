@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Configure;
 
-use App\Http\Requests\Student\TypeExams\StoreTypeExamRequest;
-use App\Http\Requests\Student\TypeExams\UpdateTypeExamsRequest;
+use App\Http\Requests\Configure\TypeExams\StoreTypeExamRequest;
+use App\Http\Requests\Configure\TypeExams\UpdateTypeExamsRequest;
 use App\Models\TypeExam;
 use App\Repositories\TypeExamRepositoryInterface;
 use Illuminate\Http\JsonResponse;

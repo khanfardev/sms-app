@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Configure;
 
-use App\Http\Requests\Student\Subjects\StoreSubjectRequest;
-use App\Http\Requests\Student\Subjects\UpdateSubjectRequest;
-use App\Models\Subject;
-use App\Repositories\SubjectRepositoryInterface;
+use App\Http\Requests\Configure\Shifts\StoreShiftRequest;
+use App\Http\Requests\Configure\Shifts\UpdateShiftRequest;
+use App\Models\StudentShift;
+use App\Repositories\StudentShiftRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class SubjectController extends Controller
+class StudentShiftController extends Controller
 {
     private $repository;
 
-    public function __construct(SubjectRepositoryInterface $repository)
+    public function __construct(StudentShiftRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }
@@ -31,7 +31,7 @@ class SubjectController extends Controller
     }
 
 
-    public function store(StoreSubjectRequest $request):JsonResponse
+    public function store(StoreShiftRequest $request):JsonResponse
     {
         $studentClass=$this->repository->store($request->validated());
         return response()->json($studentClass);
@@ -45,13 +45,13 @@ class SubjectController extends Controller
     }
 
 
-    public function edit(Subject $subject)
+    public function edit(StudentShift $studentShift)
     {
         //
     }
 
 
-    public function update(UpdateSubjectRequest $request, $id) :JsonResponse
+    public function update(UpdateShiftRequest $request, $id) :JsonResponse
     {
         $this->repository->update($id,$request->validated());
         return response()->json("Updated successfully");

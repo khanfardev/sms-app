@@ -1,18 +1,18 @@
 <?php
 
-use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\ClassSubjectController;
-use App\Http\Controllers\Api\JobTitleController;
-use App\Http\Controllers\Api\ProfileController;
-use App\Http\Controllers\Api\StudentClassController;
-use App\Http\Controllers\Api\StudentGroupController;
-use App\Http\Controllers\Api\StudentShiftController;
-use App\Http\Controllers\Api\SubjectController;
-use App\Http\Controllers\Api\TuitionFeeCategoryAmountController;
-use App\Http\Controllers\Api\TuitionFeeCategoryController;
-use App\Http\Controllers\Api\TypeExamController;
-use App\Http\Controllers\Api\UserController;
-use App\Http\Controllers\Api\YearController;
+use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\Configure\ClassSubjectController;
+use App\Http\Controllers\Api\Configure\JobTitleController;
+use App\Http\Controllers\Api\Auth\ProfileController;
+use App\Http\Controllers\Api\Configure\StudentClassController;
+use App\Http\Controllers\Api\Configure\StudentGroupController;
+use App\Http\Controllers\Api\Configure\StudentShiftController;
+use App\Http\Controllers\Api\Configure\SubjectController;
+use App\Http\Controllers\Api\Configure\TuitionFeeCategoryAmountController;
+use App\Http\Controllers\Api\Configure\TuitionFeeCategoryController;
+use App\Http\Controllers\Api\Configure\TypeExamController;
+use App\Http\Controllers\Api\Auth\UserController;
+use App\Http\Controllers\Api\Configure\YearController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

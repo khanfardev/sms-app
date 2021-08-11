@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Configure;
 
-use App\Http\Requests\Student\ClassSubjects\StoreClassSubjectRequest;
-use App\Http\Requests\Student\ClassSubjects\UpdateClassSubjectRequest;
+use App\Http\Requests\Configure\ClassSubjects\UpdateClassSubjectRequest;
+use App\Http\Requests\Configure\ClassSubjects\StoreClassSubjectRequest;
 use App\Models\ClassSubject;
 use App\Repositories\ClassSubjectRepositoryInterface;
 use Illuminate\Http\JsonResponse;

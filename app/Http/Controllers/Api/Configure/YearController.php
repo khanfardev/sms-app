@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Configure;
 
-use App\Http\Requests\Student\JobTitles\StoreJobTitleRequest;
-use App\Http\Requests\Student\JobTitles\UpdateJobTitleRequest;
-use App\Models\JobTitle;
-use App\Repositories\JobTitleRepositoryInterface;
+use App\Http\Requests\Configure\Years\StoreYearsRequest;
+use App\Http\Requests\Configure\Years\UpdateYearsRequest;
+use App\Models\Year;
+use App\Repositories\YearsRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class JobTitleController extends Controller
+class YearController extends Controller
 {
     private $repository;
 
-    public function __construct(JobTitleRepositoryInterface $repository)
+    public function __construct(YearsRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }
@@ -31,10 +31,10 @@ class JobTitleController extends Controller
     }
 
 
-    public function store(StoreJobTitleRequest $request):JsonResponse
+    public function store(StoreYearsRequest $request):JsonResponse
     {
-        $studentClass=$this->repository->store($request->validated());
-        return response()->json($studentClass);
+        $years =$this->repository->store($request->validated());
+        return response()->json($years);
 
     }
 
@@ -45,13 +45,13 @@ class JobTitleController extends Controller
     }
 
 
-    public function edit(JobTitle $jobTitle)
+    public function edit(Year $year)
     {
         //
     }
 
 
-    public function update(UpdateJobTitleRequest $request, $id) :JsonResponse
+    public function update(UpdateYearsRequest $request, $id) :JsonResponse
     {
         $this->repository->update($id,$request->validated());
         return response()->json("Updated successfully");

@@ -14,24 +14,17 @@ class CreateStudentsTable extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            $table->id();
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('year_id');
+            $table->unsignedBigInteger('class_id');
+            $table->unsignedBigInteger('group_id')->nullable();
+            $table->unsignedBigInteger('shift_id')->nullable();
+            $table->foreign('student_id')->references('id')->on('users');
+            $table->foreign('year_id')->references('id')->on('years');
+            $table->foreign('class_id')->references('id')->on('student_classes');
+            $table->foreign('group_id')->references('id')->on('student_groups');
+            $table->foreign('shift_id')->references('id')->on('student_shifts');
             $table->timestamps();
         });
     }

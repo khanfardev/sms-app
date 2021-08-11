@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Configure;
 
-use App\Http\Requests\Student\Years\StoreYearsRequest;
-use App\Http\Requests\Student\Years\UpdateYearsRequest;
-use App\Models\Year;
-use App\Repositories\YearsRepositoryInterface;
+use App\Http\Requests\Configure\Subjects\StoreSubjectRequest;
+use App\Http\Requests\Configure\Subjects\UpdateSubjectRequest;
+use App\Models\Subject;
+use App\Repositories\SubjectRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class YearController extends Controller
+class SubjectController extends Controller
 {
     private $repository;
 
-    public function __construct(YearsRepositoryInterface $repository)
+    public function __construct(SubjectRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }
@@ -31,10 +31,10 @@ class YearController extends Controller
     }
 
 
-    public function store(StoreYearsRequest $request):JsonResponse
+    public function store(StoreSubjectRequest $request):JsonResponse
     {
-        $years =$this->repository->store($request->validated());
-        return response()->json($years);
+        $studentClass=$this->repository->store($request->validated());
+        return response()->json($studentClass);
 
     }
 
@@ -45,13 +45,13 @@ class YearController extends Controller
     }
 
 
-    public function edit(Year $year)
+    public function edit(Subject $subject)
     {
         //
     }
 
 
-    public function update(UpdateYearsRequest $request, $id) :JsonResponse
+    public function update(UpdateSubjectRequest $request, $id) :JsonResponse
     {
         $this->repository->update($id,$request->validated());
         return response()->json("Updated successfully");

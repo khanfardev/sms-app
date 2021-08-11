@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Configure;
 
-use App\Http\Requests\Student\Shifts\StoreShiftRequest;
-use App\Http\Requests\Student\Shifts\UpdateShiftRequest;
-use App\Models\StudentShift;
-use App\Repositories\StudentShiftRepositoryInterface;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Configure\TuitionFeeCategory\StoreTuitionFeeCategoryRequest;
+use App\Http\Requests\Configure\TuitionFeeCategory\UpdateTuitionFeeCategoryRequest;
+use App\Models\TuitionFeeCategory;
+use App\Repositories\TuitionFeeCategoryRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class StudentShiftController extends Controller
+class TuitionFeeCategoryController extends Controller
 {
     private $repository;
 
-    public function __construct(StudentShiftRepositoryInterface $repository)
+    public function __construct(TuitionFeeCategoryRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }
@@ -31,7 +31,7 @@ class StudentShiftController extends Controller
     }
 
 
-    public function store(StoreShiftRequest $request):JsonResponse
+    public function store(StoreTuitionFeeCategoryRequest $request):JsonResponse
     {
         $studentClass=$this->repository->store($request->validated());
         return response()->json($studentClass);
@@ -45,13 +45,13 @@ class StudentShiftController extends Controller
     }
 
 
-    public function edit(StudentShift $studentShift)
+    public function edit(TuitionFeeCategory $tuitionFeeCategory)
     {
         //
     }
 
 
-    public function update(UpdateShiftRequest $request, $id) :JsonResponse
+    public function update(UpdateTuitionFeeCategoryRequest $request, $id) :JsonResponse
     {
         $this->repository->update($id,$request->validated());
         return response()->json("Updated successfully");

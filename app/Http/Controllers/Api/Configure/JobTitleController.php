@@ -1,28 +1,27 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Configure;
 
-use App\Http\Requests\Student\Classes\StoreStudentClassesRequest;
-use App\Http\Requests\Student\Classes\UpdateStudentClassesRequest;
-use App\Models\StudentClass;
-use App\Repositories\StudentClassesRepository;
-use App\Repositories\StudentClassesRepositoryInterface;
+use App\Http\Requests\Configure\JobTitles\StoreJobTitleRequest;
+use App\Http\Requests\Configure\JobTitles\UpdateJobTitleRequest;
+use App\Models\JobTitle;
+use App\Repositories\JobTitleRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class StudentClassController extends Controller
+class JobTitleController extends Controller
 {
     private $repository;
 
-    public function __construct(StudentClassesRepositoryInterface $repository)
+    public function __construct(JobTitleRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }
     public function index(): JsonResponse
     {
         $data = $this->repository->get();
-       return response()->json($data);
+        return response()->json($data);
     }
 
 
@@ -32,7 +31,7 @@ class StudentClassController extends Controller
     }
 
 
-    public function store(StoreStudentClassesRequest $request):JsonResponse
+    public function store(StoreJobTitleRequest $request):JsonResponse
     {
         $studentClass=$this->repository->store($request->validated());
         return response()->json($studentClass);
@@ -46,13 +45,13 @@ class StudentClassController extends Controller
     }
 
 
-    public function edit(StudentClass $studentClass)
+    public function edit(JobTitle $jobTitle)
     {
         //
     }
 
 
-    public function update(UpdateStudentClassesRequest $request, $id) :JsonResponse
+    public function update(UpdateJobTitleRequest $request, $id) :JsonResponse
     {
         $this->repository->update($id,$request->validated());
         return response()->json("Updated successfully");

@@ -1,27 +1,28 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Configure;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Student\TuitionFeeCategory\StoreTuitionFeeCategoryRequest;
-use App\Http\Requests\Student\TuitionFeeCategory\UpdateTuitionFeeCategoryRequest;
-use App\Models\TuitionFeeCategory;
-use App\Repositories\TuitionFeeCategoryRepositoryInterface;
+use App\Http\Requests\Configure\Classes\StoreStudentClassesRequest;
+use App\Http\Requests\Configure\Classes\UpdateStudentClassesRequest;
+use App\Models\StudentClass;
+use App\Repositories\StudentClassesRepository;
+use App\Repositories\StudentClassesRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class TuitionFeeCategoryController extends Controller
+class StudentClassController extends Controller
 {
     private $repository;
 
-    public function __construct(TuitionFeeCategoryRepositoryInterface $repository)
+    public function __construct(StudentClassesRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }
     public function index(): JsonResponse
     {
         $data = $this->repository->get();
-        return response()->json($data);
+       return response()->json($data);
     }
 
 
@@ -31,7 +32,7 @@ class TuitionFeeCategoryController extends Controller
     }
 
 
-    public function store(StoreTuitionFeeCategoryRequest $request):JsonResponse
+    public function store(StoreStudentClassesRequest $request):JsonResponse
     {
         $studentClass=$this->repository->store($request->validated());
         return response()->json($studentClass);
@@ -45,13 +46,13 @@ class TuitionFeeCategoryController extends Controller
     }
 
 
-    public function edit(TuitionFeeCategory $tuitionFeeCategory)
+    public function edit(StudentClass $studentClass)
     {
         //
     }
 
 
-    public function update(UpdateTuitionFeeCategoryRequest $request, $id) :JsonResponse
+    public function update(UpdateStudentClassesRequest $request, $id) :JsonResponse
     {
         $this->repository->update($id,$request->validated());
         return response()->json("Updated successfully");

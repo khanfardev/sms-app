@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Configure;
 
-use App\Http\Requests\Student\TuitionFeeCategory\StoreTuitionFeeCategoryRequest;
-use App\Http\Requests\Student\TuitionFeeCategory\UpdateTuitionFeeCategoryRequest;
-use App\Http\Requests\Student\TuitionFeeCategoryAmount\StoreTuitionFeeCategoryAmountRequest;
+use App\Http\Requests\Configure\TuitionFeeCategory\StoreTuitionFeeCategoryRequest;
+use App\Http\Requests\Configure\TuitionFeeCategory\UpdateTuitionFeeCategoryRequest;
+use App\Http\Requests\Configure\TuitionFeeCategoryAmount\StoreTuitionFeeCategoryAmountRequest;
 use App\Models\TuitionFeeCategoryAmount;
 use App\Repositories\TuitionFeeAmountRepositoryInterface;
 use Illuminate\Http\JsonResponse;
